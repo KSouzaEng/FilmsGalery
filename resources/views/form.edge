@@ -1,0 +1,53 @@
+@layout('layouts.master')
+
+@section('content')
+
+<div class="container px-5 my-5 px-5">
+
+  <form id="contactForm" action="{{route('MovieController.store')}}" method="POST">
+    {{ csrfField() }}
+    <!-- Name input-->
+    <div class="form-floating mb-3">
+        <input class="form-control" id="titulo" name="nome" type="text" placeholder="Enter your titulo..." data-sb-validations="required" />
+        <label for="titulo">Nome do Filme</label>
+        <div class="invalid-feedback" data-sb-feedback="titulo:required">A name is required.</div>
+    </div>
+    <!-- Email address input-->
+    <div class="form-floating mb-3">
+        <input class="form-control" id="data_lancamento" name="data_lancamento" type="date" placeholder="name@example.com" data-sb-validations="required,email" />
+        <label for="data_lancamento">Ano de Lançamento</label>
+        <div class="invalid-feedback" data-sb-feedback="data_lancamento:required">An email is required.</div>
+        <div class="invalid-feedback" data-sb-feedback="data_lancamento:data_lancamento">Email is not valid.</div>
+    </div>
+    <!-- Phone number input-->
+    <div class="form-floating mb-3">
+      {{--  <label for="exampleFormControlSelect1">Genêro</label>  --}}
+      <select class="form-control" name="genero">
+        <option value="">Selecione</option>
+        <option  value="acao">Ação</option>
+        <option  value="comedia">Comédia</option>
+        <option  value="infantil">Infantil</option>
+        <option  value="terror">Terror</option>
+        <option  value="suspense">suspense</option>
+      </select>
+    </div>
+    <!-- Message input-->
+    <div class="form-floating mb-3">
+        <textarea class="form-control" id="sinopse" name="sinopse" type="text" placeholder="Enter your sinopse here..." style="height: 10rem" data-sb-validations="required"></textarea>
+        <label for="sinopse">Sinopse</label>
+        <div class="invalid-feedback" data-sb-feedback="sinopse:required">A sinopse is required.</div>
+    </div>
+    <div class="d-none" id="submitSuccessMessage">
+        <div class="text-center mb-3">
+            <div class="fw-bolder">Form submission successful!</div>
+            To activate this form, sign up at
+            <br />
+            <a href="https://startbootstrap.com/solution/contact-forms"></a>
+        </div>
+    </div>
+    <div class="d-none" id="submitErrorMessage"><div class="text-center text-danger mb-3">Error sending message!</div></div>
+    <div class="d-grid"><button class=" btn-lg bg-dark text-white" id="submitButton " type="submit">Salvar</button></div>
+</form>
+</div>
+
+@endsection

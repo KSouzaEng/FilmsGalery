@@ -1,0 +1,21 @@
+@layout('layouts.master')
+
+@section('content')
+
+<div class="container px-5 my-5 px-5">
+
+    <div class="row">
+      @each(movies in movies)
+      <div class="col-md-3">
+        <div class="card shadow mb-3">
+          <div class="card-body">
+            <h4 class="card-title">{{movies.nome}}</h4>
+            <p class="card-text">{{movies.genero}}</p>
+          </div>
+        </div>
+      </div>
+      @endeach
+    </div>
+</div>
+
+@endsection
